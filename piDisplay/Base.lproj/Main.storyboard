@@ -77,6 +77,10 @@
                                     <action selector="brightnessSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="l6n-us-tpw"/>
                                 </connections>
                             </slider>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5xG-ql-jnU">
+                                <rect key="frame" x="169" y="245" width="37" height="37"/>
+                                <color key="color" red="1" green="0.045580741309999999" blue="0.20949980679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -88,16 +92,19 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dpg-UB-7QW" secondAttribute="trailing" constant="20" id="Wvk-dx-yBz"/>
                             <constraint firstItem="dpg-UB-7QW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="d0T-Sc-ZtK"/>
                             <constraint firstItem="dGB-Pt-N5m" firstAttribute="centerX" secondItem="B7r-lK-80s" secondAttribute="centerX" id="hpi-7c-IHM"/>
+                            <constraint firstItem="5xG-ql-jnU" firstAttribute="centerY" secondItem="YXd-vp-WXj" secondAttribute="centerY" id="jvO-6r-f0l"/>
                             <constraint firstItem="dpg-UB-7QW" firstAttribute="top" secondItem="QW6-SX-g31" secondAttribute="bottom" constant="20" id="m6D-CV-E4Z"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="top" secondItem="dpg-UB-7QW" secondAttribute="bottom" constant="20" id="nue-oW-VM9"/>
                             <constraint firstItem="QW6-SX-g31" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qXj-dh-Smo"/>
                             <constraint firstItem="YXd-vp-WXj" firstAttribute="centerX" secondItem="dGB-Pt-N5m" secondAttribute="centerX" id="rvl-zT-wQf"/>
                             <constraint firstItem="dpg-UB-7QW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tWh-HE-umC"/>
+                            <constraint firstItem="5xG-ql-jnU" firstAttribute="centerX" secondItem="YXd-vp-WXj" secondAttribute="centerX" id="xqE-gB-q5y"/>
                             <constraint firstItem="dGB-Pt-N5m" firstAttribute="top" secondItem="B7r-lK-80s" secondAttribute="bottom" constant="20" id="zFU-dR-Sdk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="5xG-ql-jnU" id="lwJ-5S-9Fu"/>
                         <outlet property="backlightLabel" destination="nXy-Sv-DS3" id="nZB-Ub-PXH"/>
                         <outlet property="backlightSwitch" destination="N1P-Ka-xnU" id="av2-Ez-pWA"/>
                         <outlet property="brightnessLabel" destination="PSc-ud-4Ta" id="861-Xk-VTL"/>
