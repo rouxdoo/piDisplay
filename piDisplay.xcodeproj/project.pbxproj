@@ -12,9 +12,12 @@
 		D3FDB76C21DA821600208773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FDB76A21DA821600208773 /* Main.storyboard */; };
 		D3FDB76E21DA821700208773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3FDB76D21DA821700208773 /* Assets.xcassets */; };
 		D3FDB77121DA821700208773 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FDB76F21DA821700208773 /* LaunchScreen.storyboard */; };
+		E0D19F2438EA92FDE62594AB /* Pods_piDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF080AAC58363128C4688C /* Pods_piDisplay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03FF080AAC58363128C4688C /* Pods_piDisplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_piDisplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23551A9E5B93F6229045DFC5 /* Pods-piDisplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piDisplay.release.xcconfig"; path = "Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay.release.xcconfig"; sourceTree = "<group>"; };
 		D3FDB76321DA821600208773 /* piDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FDB76621DA821600208773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FDB76821DA821600208773 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		D3FDB76D21DA821700208773 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3FDB77021DA821700208773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3FDB77221DA821700208773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0465F3672DF38C8EC047095 /* Pods-piDisplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piDisplay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D19F2438EA92FDE62594AB /* Pods_piDisplay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34DB592372726C3299FC15A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0465F3672DF38C8EC047095 /* Pods-piDisplay.debug.xcconfig */,
+				23551A9E5B93F6229045DFC5 /* Pods-piDisplay.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B76012D48928111D7D5F11B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03FF080AAC58363128C4688C /* Pods_piDisplay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D3FDB75A21DA821600208773 = {
 			isa = PBXGroup;
 			children = (
 				D3FDB76521DA821600208773 /* piDisplay */,
 				D3FDB76421DA821600208773 /* Products */,
+				34DB592372726C3299FC15A4 /* Pods */,
+				7B76012D48928111D7D5F11B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3FDB77521DA821700208773 /* Build configuration list for PBXNativeTarget "piDisplay" */;
 			buildPhases = (
+				B904B5A5BFD57F558DA5EAEF /* [CP] Check Pods Manifest.lock */,
 				D3FDB75F21DA821600208773 /* Sources */,
 				D3FDB76021DA821600208773 /* Frameworks */,
 				D3FDB76121DA821600208773 /* Resources */,
+				2F11E306D6C94E08C2979C58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F11E306D6C94E08C2979C58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NMSSH/NMSSH.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMSSH.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B904B5A5BFD57F558DA5EAEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-piDisplay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D3FDB75F21DA821600208773 /* Sources */ = {
@@ -280,6 +345,7 @@
 		};
 		D3FDB77621DA821700208773 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0465F3672DF38C8EC047095 /* Pods-piDisplay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +364,7 @@
 		};
 		D3FDB77721DA821700208773 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23551A9E5B93F6229045DFC5 /* Pods-piDisplay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
