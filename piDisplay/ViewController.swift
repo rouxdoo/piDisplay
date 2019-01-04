@@ -41,64 +41,8 @@ class ViewController: UIViewController {
     var piBacklightOn: Bool = false
     var brightness: Float = 0
     
-    @IBAction func testButtonPressed(_ sender: Any) {
-        let host = pihost
-        let user = piuser
-        let pass = pipass
-        activityIndicator.startAnimating()
-        DispatchQueue.global(qos: .default).async {
-            let session: NMSSHSession = NMSSHSession(host: host, port: 22, andUsername: user)
-            session.connect()
-            session.authenticate(byPassword: pass)
-            if session.isAuthorized {
-                self.hostAuthorized = true
-                var error: NSError?
-                var response = session.channel.execute("sudo rpi-backlight --power", error: &error)
-                response = response.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-                if response == "True" {
-                    self.piBacklightOn = true
-                } else {
-                    self.piBacklightOn = false
-                }
-                response = session.channel.execute("sudo rpi-backlight --actual-brightness", error: &error)
-                response = response.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-                self.brightness = Float(response) ?? 0
-                session.disconnect()
-            } else {
-                print("authentication failed")
-            }
-            DispatchQueue.main.async {
-                if self.hostAuthorized {
-                    UserDefaults.standard.set(self.pihost, forKey: "pihost")
-                    UserDefaults.standard.set(self.piuser, forKey: "piuser")
-                    UserDefaults.standard.set(self.pipass, forKey: "pipass")
-                    self.connectionStatusLabel.text = "Host Validated"
-                    self.brightnessSlider.isEnabled = true
-                    self.backlightSwitch.isEnabled = true
-                    if self.piBacklightOn {
-                        self.backlightSwitch.isOn = true
-                    } else {
-                        self.backlightSwitch.isOn = true
-                    }
-                    self.brightnessSlider.value = self.brightness
-                } else {
-                    self.connectionStatusLabel.text = "Not Connected"
-                    self.brightnessSlider.isEnabled = false
-                    self.backlightSwitch.isEnabled = false
-                }
-                self.activityIndicator.stopAnimating()
-            }
-        }
-    }
-    @IBAction func backlightSwitchPressed(_ sender: Any) {
-        if (sender as! UISwitch).isOn {
-            piBacklightOn = true
-        } else {
-            piBacklightOn = false
-        }
-        let host = pihost
-        let user = piuser
-        let pass = pipass
+    func sshCmd(host: String, user: String, pass: String, command: String, completion: @escaping (String) -> Void = {_ in}) {
+        var response: String?
         activityIndicator.startAnimating()
         DispatchQueue.global(qos: .default).async {
             let session: NMSSHSession = NMSSHSession(host: host, port: 22, andUsername: user)
@@ -106,45 +50,75 @@ class ViewController: UIViewController {
             session.authenticate(byPassword: pass)
             if session.isAuthorized {
                 var error: NSError?
-                if self.piBacklightOn {
-                    let _: String? = session.channel.execute("sudo rpi-backlight --on", error: &error)
-                } else {
-                    let _: String? = session.channel.execute("sudo rpi-backlight --off", error: &error)
-                }
+                response = session.channel.execute(command, error: &error)
                 session.disconnect()
-            } else {
-                print("authentication failed")
+                completion(response ?? "")
             }
             DispatchQueue.main.async {
                 // stuff that goes on main thread
                 self.activityIndicator.stopAnimating()
             }
+        }
+    }
+    func validHost(host: String, user: String, pass: String) -> Bool {
+        let session: NMSSHSession = NMSSHSession(host: host, port: 22, andUsername: user)
+        session.connect()
+        session.authenticate(byPassword: pass)
+        if session.isAuthorized {
+            session.disconnect()
+            return true
+        } else {
+            session.disconnect()
+            return false
+        }
+    }
+    @IBAction func testButtonPressed(_ sender: Any) {
+        if validHost(host: pihost, user: piuser, pass: pipass) {
+            sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --power", completion: { (cmd1) -> Void in
+                if cmd1.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "True" {
+                    DispatchQueue.main.async {
+                        self.backlightSwitch.isOn = true
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.backlightSwitch.isOn = false
+                    }
+                }
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(self.pihost, forKey: "pihost")
+                    UserDefaults.standard.set(self.piuser, forKey: "piuser")
+                    UserDefaults.standard.set(self.pipass, forKey: "pipass")
+                    self.connectionStatusLabel.text = "Connected: " + self.pihost
+                    self.brightnessSlider.isEnabled = true
+                    self.backlightSwitch.isEnabled = true
+                }
+            })
+            sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --actual-brightness", completion: { (cmd2) -> Void in
+                self.brightness = Float(cmd2.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)) ?? 0
+                DispatchQueue.main.async {
+                    self.brightnessSlider.value = self.brightness
+                }
+            })
+        } else {
+            self.connectionStatusLabel.text = "Unable to connect"
+            self.brightnessSlider.isEnabled = false
+            self.backlightSwitch.isEnabled = false
+        }
+    }
+    @IBAction func backlightSwitchPressed(_ sender: Any) {
+        if (sender as! UISwitch).isOn {
+            piBacklightOn = true
+            sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --on")
+        } else {
+            piBacklightOn = false
+            sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --off")
         }
     }
     @IBAction func brightnessSliderChanged(_ sender: Any) {
         let slider = sender as! UISlider
         brightness = slider.value
         let newval = Int(brightness)
-        let host = pihost
-        let user = piuser
-        let pass = pipass
-        activityIndicator.startAnimating()
-        DispatchQueue.global(qos: .default).async {
-            let session: NMSSHSession = NMSSHSession(host: host, port: 22, andUsername: user)
-            session.connect()
-            session.authenticate(byPassword: pass)
-            if session.isAuthorized {
-                var error: NSError?
-                let _: String? = session.channel.execute("sudo rpi-backlight -b " + String(newval) + " -d 1 -s", error: &error)
-                session.disconnect()
-            } else {
-                print("authentication failed")
-            }
-            DispatchQueue.main.async {
-                // stuff that goes on main thread
-                self.activityIndicator.stopAnimating()
-            }
-        }
+        sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight -b " + String(newval) + " -d 1 -s")
     }
     
     override func viewDidLoad() {
