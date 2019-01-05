@@ -80,18 +80,28 @@
                                     <action selector="brightnessSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="l6n-us-tpw"/>
                                 </connections>
                             </slider>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-3n-G2i">
+                                <rect key="frame" x="10" y="383.5" width="355" height="273.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QW6-SX-g31" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="0dA-aG-hXV"/>
                             <constraint firstItem="nXy-Sv-DS3" firstAttribute="leading" secondItem="dGB-Pt-N5m" secondAttribute="leading" id="0kz-z8-dSc"/>
                             <constraint firstItem="nXy-Sv-DS3" firstAttribute="top" secondItem="dGB-Pt-N5m" secondAttribute="bottom" constant="64.5" id="1CT-9O-VC9"/>
+                            <constraint firstItem="h7l-3n-G2i" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7Cw-Hv-3Km"/>
                             <constraint firstItem="P3w-uM-Wfg" firstAttribute="leading" secondItem="PSc-ud-4Ta" secondAttribute="trailing" constant="17" id="7Jj-vF-Dmv"/>
                             <constraint firstItem="YXd-vp-WXj" firstAttribute="top" secondItem="dGB-Pt-N5m" secondAttribute="bottom" constant="10" id="CYM-eR-ApV"/>
+                            <constraint firstItem="h7l-3n-G2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="FYf-gs-o0f"/>
                             <constraint firstItem="dGB-Pt-N5m" firstAttribute="width" secondItem="B7r-lK-80s" secondAttribute="width" id="MKy-0t-sww"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="width" secondItem="dpg-UB-7QW" secondAttribute="width" id="R1x-jM-qVc"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="centerX" secondItem="dpg-UB-7QW" secondAttribute="centerX" id="URS-u8-5Pl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dpg-UB-7QW" secondAttribute="trailing" id="Wvk-dx-yBz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h7l-3n-G2i" secondAttribute="trailing" constant="10" id="Wwh-jG-uOc"/>
+                            <constraint firstItem="h7l-3n-G2i" firstAttribute="top" secondItem="P3w-uM-Wfg" secondAttribute="bottom" constant="15" id="XGJ-mk-3WL"/>
                             <constraint firstItem="dpg-UB-7QW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="d0T-Sc-ZtK"/>
                             <constraint firstItem="PSc-ud-4Ta" firstAttribute="leading" secondItem="nXy-Sv-DS3" secondAttribute="leading" id="eD0-Zo-t0W"/>
                             <constraint firstItem="P3w-uM-Wfg" firstAttribute="centerY" secondItem="PSc-ud-4Ta" secondAttribute="centerY" id="eeO-0o-Ykl"/>
@@ -100,6 +110,7 @@
                             <constraint firstItem="5xG-ql-jnU" firstAttribute="centerY" secondItem="YXd-vp-WXj" secondAttribute="centerY" id="jvO-6r-f0l"/>
                             <constraint firstItem="dpg-UB-7QW" firstAttribute="top" secondItem="QW6-SX-g31" secondAttribute="bottom" constant="20" id="m6D-CV-E4Z"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="top" secondItem="dpg-UB-7QW" secondAttribute="bottom" constant="20" id="nue-oW-VM9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h7l-3n-G2i" secondAttribute="bottom" constant="10" id="ojW-0W-uaB"/>
                             <constraint firstItem="N1P-Ka-xnU" firstAttribute="centerY" secondItem="nXy-Sv-DS3" secondAttribute="centerY" id="pMf-Al-Nbq"/>
                             <constraint firstItem="PSc-ud-4Ta" firstAttribute="top" secondItem="nXy-Sv-DS3" secondAttribute="bottom" constant="29" id="q8G-lD-Zx8"/>
                             <constraint firstItem="QW6-SX-g31" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qXj-dh-Smo"/>
@@ -117,6 +128,7 @@
                         <outlet property="brightnessLabel" destination="PSc-ud-4Ta" id="861-Xk-VTL"/>
                         <outlet property="brightnessSlider" destination="P3w-uM-Wfg" id="v4w-AS-Zqz"/>
                         <outlet property="connectionStatusLabel" destination="QW6-SX-g31" id="ayn-aq-5tn"/>
+                        <outlet property="logView" destination="h7l-3n-G2i" id="A8D-qY-cAM"/>
                         <outlet property="pihostTextfield" destination="dpg-UB-7QW" id="53X-Ot-xxg"/>
                         <outlet property="pipasswdTextfield" destination="dGB-Pt-N5m" id="nYu-Q4-O6B"/>
                         <outlet property="piuserTextfield" destination="B7r-lK-80s" id="K1K-qT-dch"/>
