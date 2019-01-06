@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func rpibacklightInstall(_ sender: Any) {
         let vc: ViewController = presentingViewController as! ViewController
-        if vc.pihost == "" || vc.piuser == "" || vc.pipass == "" {
+        if !vc.validHost(host: vc.pihost, user: vc.piuser, pass: vc.pipass) {
             vc.connectionStatusLabel.text = "Authenticate first to install..."
             vc.log("Unable to log in to pi host")
             self.dismiss(animated: true, completion: nil)

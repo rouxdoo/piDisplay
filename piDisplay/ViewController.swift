@@ -54,12 +54,10 @@ class ViewController: UIViewController {
                 session.disconnect()
                 completion(response ?? "")
                 DispatchQueue.main.async {
-                    // stuff that goes on main thread
                     self.activityIndicator.stopAnimating()
                 }
             } else {
                 DispatchQueue.main.async {
-                    // stuff that goes on main thread
                     self.activityIndicator.stopAnimating()
                 }
             }
