@@ -86,16 +86,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-pX-2Zt">
+                                <rect key="frame" x="335" y="20" width="30" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="⚙︎"/>
+                                <connections>
+                                    <segue destination="yrP-SZ-Ei5" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="8Un-op-BGQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QW6-SX-g31" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="0dA-aG-hXV"/>
                             <constraint firstItem="nXy-Sv-DS3" firstAttribute="leading" secondItem="dGB-Pt-N5m" secondAttribute="leading" id="0kz-z8-dSc"/>
                             <constraint firstItem="nXy-Sv-DS3" firstAttribute="top" secondItem="dGB-Pt-N5m" secondAttribute="bottom" constant="64.5" id="1CT-9O-VC9"/>
+                            <constraint firstItem="Q37-pX-2Zt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="48q-8Q-7aF"/>
                             <constraint firstItem="h7l-3n-G2i" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7Cw-Hv-3Km"/>
                             <constraint firstItem="P3w-uM-Wfg" firstAttribute="leading" secondItem="PSc-ud-4Ta" secondAttribute="trailing" constant="17" id="7Jj-vF-Dmv"/>
                             <constraint firstItem="YXd-vp-WXj" firstAttribute="top" secondItem="dGB-Pt-N5m" secondAttribute="bottom" constant="10" id="CYM-eR-ApV"/>
                             <constraint firstItem="h7l-3n-G2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="FYf-gs-o0f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q37-pX-2Zt" secondAttribute="trailing" constant="10" id="J2M-FG-0Jd"/>
                             <constraint firstItem="dGB-Pt-N5m" firstAttribute="width" secondItem="B7r-lK-80s" secondAttribute="width" id="MKy-0t-sww"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="width" secondItem="dpg-UB-7QW" secondAttribute="width" id="R1x-jM-qVc"/>
                             <constraint firstItem="B7r-lK-80s" firstAttribute="centerX" secondItem="dpg-UB-7QW" secondAttribute="centerX" id="URS-u8-5Pl"/>
@@ -137,6 +147,126 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="106" y="134"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="BFc-fG-qR9">
+            <objects>
+                <viewController id="yrP-SZ-Ei5" customClass="SettingsViewController" customModule="piDisplay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GUN-8U-IDC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-do-MBS">
+                                <rect key="frame" x="112.5" y="32" width="247.5" height="475"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7m3-Wv-sIr">
+                                        <rect key="frame" x="217.5" y="0.0" width="30" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="⇣"/>
+                                        <connections>
+                                            <action selector="closePaneButtonPressed:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="89p-8i-CLX"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires &quot;rpi-backlight&quot; by Linus Groh to be installed on your pi." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGJ-kW-HXs">
+                                        <rect key="frame" x="8" y="50" width="239.5" height="57.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXc-HA-7MP">
+                                        <rect key="frame" x="8" y="112.5" width="78" height="30"/>
+                                        <state key="normal" title="Learn More"/>
+                                        <connections>
+                                            <action selector="rpibacklightGit:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="I47-SV-NDM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-4g-rv6">
+                                        <rect key="frame" x="143.5" y="112.5" width="89" height="30"/>
+                                        <state key="normal" title="Install for me"/>
+                                        <connections>
+                                            <action selector="rpibacklightInstall:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="G3c-Qv-fDW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app uses NMSSH to communicate with your pi via SSH." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htS-Hx-Gxn">
+                                        <rect key="frame" x="8" y="156.5" width="239.5" height="57.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="379-yB-0pQ">
+                                        <rect key="frame" x="8" y="219" width="78" height="30"/>
+                                        <state key="normal" title="Learn More"/>
+                                        <connections>
+                                            <action selector="nmsshGit:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="9bT-3U-5WJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDR-eg-sJU">
+                                        <rect key="frame" x="142.5" y="219" width="90" height="30"/>
+                                        <state key="normal" title="View License"/>
+                                        <connections>
+                                            <action selector="nmsshLicense:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="Fh3-6x-GNI"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-jH-ivc">
+                                        <rect key="frame" x="8" y="264" width="239.5" height="143.5"/>
+                                        <string key="text">Privacy: This app will not collect or share any data outside of what is required to communicate between the iOs device and the pi host you specify. No data will be stored beyond the last successful SSH login configuration which can be deleted below.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-4i-2fT">
+                                        <rect key="frame" x="46.5" y="412.5" width="163" height="30"/>
+                                        <state key="normal" title="Clear Stored Login Data"/>
+                                        <connections>
+                                            <action selector="clearUserDefaults:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="3B6-Xz-ofG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7m3-Wv-sIr" firstAttribute="top" secondItem="Rha-do-MBS" secondAttribute="top" id="16q-ut-5eI"/>
+                                    <constraint firstItem="GXc-HA-7MP" firstAttribute="leading" secondItem="QGJ-kW-HXs" secondAttribute="leading" id="3V1-NF-fiL"/>
+                                    <constraint firstItem="htS-Hx-Gxn" firstAttribute="leading" secondItem="QGJ-kW-HXs" secondAttribute="leading" id="AT9-In-kc3"/>
+                                    <constraint firstItem="379-yB-0pQ" firstAttribute="top" secondItem="htS-Hx-Gxn" secondAttribute="bottom" constant="5" id="FLr-WG-0Nx"/>
+                                    <constraint firstItem="9bt-jH-ivc" firstAttribute="trailing" secondItem="htS-Hx-Gxn" secondAttribute="trailing" id="FpH-QD-uRt"/>
+                                    <constraint firstItem="9bt-jH-ivc" firstAttribute="top" secondItem="379-yB-0pQ" secondAttribute="bottom" constant="15" id="IgE-pa-2S8"/>
+                                    <constraint firstItem="GXc-HA-7MP" firstAttribute="top" secondItem="QGJ-kW-HXs" secondAttribute="bottom" constant="5" id="Kmb-GD-qSH"/>
+                                    <constraint firstItem="htS-Hx-Gxn" firstAttribute="top" secondItem="GXc-HA-7MP" secondAttribute="bottom" constant="14" id="OXU-qO-ASL"/>
+                                    <constraint firstItem="QGJ-kW-HXs" firstAttribute="leading" secondItem="Rha-do-MBS" secondAttribute="leading" constant="8" id="PM9-VA-FJ8"/>
+                                    <constraint firstItem="9bt-jH-ivc" firstAttribute="leading" secondItem="htS-Hx-Gxn" secondAttribute="leading" id="Pid-O5-KKR"/>
+                                    <constraint firstItem="YDR-eg-sJU" firstAttribute="centerY" secondItem="379-yB-0pQ" secondAttribute="centerY" id="QUz-80-1Nl"/>
+                                    <constraint firstItem="YDR-eg-sJU" firstAttribute="trailing" secondItem="8AP-4g-rv6" secondAttribute="trailing" id="Y0b-zv-Qdb"/>
+                                    <constraint firstItem="JHx-4i-2fT" firstAttribute="centerX" secondItem="9bt-jH-ivc" secondAttribute="centerX" id="YJq-gU-0mW"/>
+                                    <constraint firstAttribute="trailing" secondItem="QGJ-kW-HXs" secondAttribute="trailing" id="YRq-X4-5Ef"/>
+                                    <constraint firstItem="8AP-4g-rv6" firstAttribute="centerY" secondItem="GXc-HA-7MP" secondAttribute="centerY" id="ZFO-uA-uat"/>
+                                    <constraint firstItem="379-yB-0pQ" firstAttribute="leading" secondItem="GXc-HA-7MP" secondAttribute="leading" id="akW-UE-wSZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="8AP-4g-rv6" secondAttribute="trailing" constant="15" id="bW0-I7-kgf"/>
+                                    <constraint firstItem="7m3-Wv-sIr" firstAttribute="trailing" secondItem="Rha-do-MBS" secondAttribute="trailing" id="dUM-9H-kE8"/>
+                                    <constraint firstItem="htS-Hx-Gxn" firstAttribute="trailing" secondItem="QGJ-kW-HXs" secondAttribute="trailing" id="gGF-S8-d3v"/>
+                                    <constraint firstItem="QGJ-kW-HXs" firstAttribute="top" secondItem="7m3-Wv-sIr" secondAttribute="bottom" constant="2" id="kYP-JM-go0"/>
+                                    <constraint firstItem="JHx-4i-2fT" firstAttribute="top" secondItem="9bt-jH-ivc" secondAttribute="bottom" constant="5" id="yuS-wB-W8s"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="bottom" secondItem="rYz-ru-aip" secondAttribute="bottom" constant="-160" id="JpL-uA-LJU"/>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="trailing" secondItem="rYz-ru-aip" secondAttribute="trailing" constant="-15" id="Obt-lD-U7b"/>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="top" secondItem="rYz-ru-aip" secondAttribute="top" constant="12" id="b0G-AD-nNC"/>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="leading" secondItem="GUN-8U-IDC" secondAttribute="centerX" multiplier="0.6" id="sGI-gK-EMh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rYz-ru-aip"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButtonPane" destination="7m3-Wv-sIr" id="C1Z-yj-g0O"/>
+                        <outlet property="installRpiButton" destination="8AP-4g-rv6" id="7GR-1j-Lme"/>
+                        <outlet property="settingsPane" destination="Rha-do-MBS" id="J5v-Pr-Y28"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xX5-5X-tkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765.60000000000002" y="134.48275862068968"/>
         </scene>
     </scenes>
 </document>

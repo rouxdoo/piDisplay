@@ -121,22 +121,22 @@ class ViewController: UIViewController {
             log("Checking current display settings")
             sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --power", completion: { (cmd1) -> Void in
                 if cmd1.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "True" {
-                    self.log("Backlight is on")
                     DispatchQueue.main.async {
                         self.backlightSwitch.isOn = true
+                        self.log("Backlight is on")
                     }
                 } else {
-                    self.log("Backlight is off")
                     DispatchQueue.main.async {
                         self.backlightSwitch.isOn = false
+                        self.log("Backlight is off")
                     }
                 }
             })
             sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --actual-brightness", completion: { (cmd2) -> Void in
                 self.brightness = Float(cmd2.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)) ?? 0
                 DispatchQueue.main.async {
-                    self.log("Brightness: " + String(self.brightness))
                     self.brightnessSlider.value = self.brightness
+                    self.log("Brightness: " + String(self.brightness))
                 }
             })
         } 
