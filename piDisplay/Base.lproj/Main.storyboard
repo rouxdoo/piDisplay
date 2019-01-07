@@ -158,10 +158,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-do-MBS">
-                                <rect key="frame" x="112.5" y="26" width="251.5" height="501"/>
+                                <rect key="frame" x="112.5" y="27" width="252.5" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7m3-Wv-sIr">
-                                        <rect key="frame" x="222.5" y="0.0" width="27" height="38"/>
+                                        <rect key="frame" x="223.5" y="0.0" width="27" height="38"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Ⓧ">
@@ -172,7 +172,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGJ-kW-HXs">
-                                        <rect key="frame" x="8" y="38" width="243.5" height="134"/>
+                                        <rect key="frame" x="8" y="38" width="244.5" height="134"/>
                                         <string key="text">This app has only been tested with the offial 7" display from the rPi Foundation.  This app requires "rpi-backlight" by Linus Groh to be installed on your pi.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
@@ -186,14 +186,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-4g-rv6">
-                                        <rect key="frame" x="147.5" y="177" width="89" height="30"/>
+                                        <rect key="frame" x="148.5" y="177" width="89" height="30"/>
                                         <state key="normal" title="Install for me"/>
                                         <connections>
                                             <action selector="rpibacklightInstall:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="G3c-Qv-fDW"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app uses NMSSH to communicate with your pi via SSH." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htS-Hx-Gxn">
-                                        <rect key="frame" x="8" y="221" width="243.5" height="57.5"/>
+                                        <rect key="frame" x="8" y="221" width="244.5" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -206,21 +206,21 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDR-eg-sJU">
-                                        <rect key="frame" x="146.5" y="283.5" width="90" height="30"/>
+                                        <rect key="frame" x="147.5" y="283.5" width="90" height="30"/>
                                         <state key="normal" title="View License"/>
                                         <connections>
                                             <action selector="nmsshLicense:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="Fh3-6x-GNI"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-jH-ivc">
-                                        <rect key="frame" x="8" y="328.5" width="243.5" height="143.5"/>
+                                        <rect key="frame" x="8" y="328.5" width="244.5" height="143.5"/>
                                         <string key="text">Privacy: This app will not collect or share any data outside of what is required to communicate between the iOs device and the pi host you specify. No data will be stored beyond the last successful SSH login configuration which can be deleted below.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-4i-2fT">
-                                        <rect key="frame" x="48.5" y="477" width="163" height="30"/>
+                                        <rect key="frame" x="49" y="477" width="163" height="30"/>
                                         <state key="normal" title="Clear Stored Login Data"/>
                                         <connections>
                                             <action selector="clearUserDefaults:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="3B6-Xz-ofG"/>
@@ -256,8 +256,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Rha-do-MBS" firstAttribute="bottom" secondItem="rYz-ru-aip" secondAttribute="bottom" constant="-140" id="JpL-uA-LJU"/>
-                            <constraint firstItem="Rha-do-MBS" firstAttribute="trailing" secondItem="rYz-ru-aip" secondAttribute="trailing" constant="-11" id="Obt-lD-U7b"/>
-                            <constraint firstItem="Rha-do-MBS" firstAttribute="top" secondItem="rYz-ru-aip" secondAttribute="top" constant="6" id="b0G-AD-nNC"/>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="trailing" secondItem="rYz-ru-aip" secondAttribute="trailing" constant="-10" id="Obt-lD-U7b"/>
+                            <constraint firstItem="Rha-do-MBS" firstAttribute="top" secondItem="rYz-ru-aip" secondAttribute="top" constant="7" id="b0G-AD-nNC"/>
                             <constraint firstItem="Rha-do-MBS" firstAttribute="leading" secondItem="GUN-8U-IDC" secondAttribute="centerX" multiplier="0.6" id="sGI-gK-EMh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rYz-ru-aip"/>
