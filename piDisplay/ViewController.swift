@@ -73,6 +73,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    var installingRpiBacklight: Bool = false
     func validHost(host: String, user: String, pass: String) -> Bool {
         log(" ----------------\n")
         log("Validating host: " + host)
@@ -88,9 +89,22 @@ class ViewController: UIViewController {
         session.authenticate(byPassword: pass)
         if session.isAuthorized {
             log("Authorized: " + session.remoteBanner!)
-            session.disconnect()
-            isConnected(state: true)
-            return true
+            if installingRpiBacklight {
+                return true
+            }
+            var error: NSError?
+            let response = session.channel.execute("command -v rpi-backlight", error: &error)
+            if response.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "" {
+                log("You need to install rpi-backlight - see settings")
+                session.disconnect()
+                isConnected(state: false)
+                return false
+            } else {
+                log("rpi-backlight installed at: " + response.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))
+                session.disconnect()
+                isConnected(state: true)
+                return true
+            }
         } else {
             log("Authorization failed (user/password)")
             session.disconnect()
@@ -177,10 +191,13 @@ class ViewController: UIViewController {
         if !launchedBefore  {
             print("First launch, setting UserDefaults")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
+            log("Enter your raspberry pi login credentials above.")
         } else {
             pihostTextfield.text = UserDefaults.standard.string(forKey: "pihost")
             piuserTextfield.text = UserDefaults.standard.string(forKey: "piuser")
             pipasswdTextfield.text = UserDefaults.standard.string(forKey: "pipass")
+            //_ = validHost(host: pihost, user: piuser, pass: pipass)
+            testButtonPressed(testConnectionButton)
         }
     }
 }

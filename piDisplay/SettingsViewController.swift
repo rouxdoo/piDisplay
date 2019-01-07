@@ -24,9 +24,11 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func rpibacklightInstall(_ sender: Any) {
         let vc: ViewController = presentingViewController as! ViewController
+        vc.installingRpiBacklight = true
         if !vc.validHost(host: vc.pihost, user: vc.piuser, pass: vc.pipass) {
             vc.connectionStatusLabel.text = "Authenticate first to install..."
             vc.log("Unable to log in to pi host")
+            vc.installingRpiBacklight = false
             self.dismiss(animated: true, completion: nil)
         } else {
             let installAlert = UIAlertController(title: "Install on Pi", message: "RUN THIS COMMAND NOW??\n\n" + "git clone https://github.com/linusg/rpi-backlight.git && cd rpi-backlight && sudo python3 setup.py install && sudo cat SUBSYSTEM==\"backlight\",RUN+=\"/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power\" > /etc/udev/rules.d/backlight-permissions.rules", preferredStyle: UIAlertController.Style.actionSheet)
@@ -34,10 +36,12 @@ class SettingsViewController: UIViewController {
             installAlert.popoverPresentationController?.sourceRect = (sender as! UIButton).bounds
             installAlert.addAction(UIAlertAction(title: "Yes, do it!", style: .default, handler: { (action: UIAlertAction!) in
                 vc.sshCmd(host: vc.pihost, user: vc.piuser, pass: vc.pipass, command: "git clone https://github.com/linusg/rpi-backlight.git && cd rpi-backlight && sudo python3 setup.py install && sudo cat SUBSYSTEM==\"backlight\",RUN+=\"/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power\" > /etc/udev/rules.d/backlight-permissions.rules")
+                vc.installingRpiBacklight = false
                 self.dismiss(animated: true, completion: nil)
             }))
             installAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
                 vc.log("Install of rpi-backlight cancelled")
+                vc.installingRpiBacklight = false
                 self.dismiss(animated: true, completion: nil)
             }))
             present(installAlert, animated: true, completion: nil)
