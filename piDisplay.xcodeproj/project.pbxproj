@@ -21,7 +21,6 @@
 		23551A9E5B93F6229045DFC5 /* Pods-piDisplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piDisplay.release.xcconfig"; path = "Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay.release.xcconfig"; sourceTree = "<group>"; };
 		D3278A9921E15DCC001D83FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D32C02E621E2EEF6001BC9E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D32C02EB21E420EB001BC9E6 /* ScreenRecording_01-07-2019 17-51-30.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ScreenRecording_01-07-2019 17-51-30.mp4"; sourceTree = "<group>"; };
 		D3FDB76321DA821600208773 /* piDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FDB76621DA821600208773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FDB76821DA821600208773 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 				D3FDB76D21DA821700208773 /* Assets.xcassets */,
 				D3FDB76F21DA821700208773 /* LaunchScreen.storyboard */,
 				D3FDB77221DA821700208773 /* Info.plist */,
-				D32C02EB21E420EB001BC9E6 /* ScreenRecording_01-07-2019 17-51-30.mp4 */,
 			);
 			path = piDisplay;
 			sourceTree = "<group>";
