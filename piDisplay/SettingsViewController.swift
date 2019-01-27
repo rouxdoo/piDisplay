@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    @IBAction func rpibacklightInstall(_ sender: Any) {
+    @IBAction func setupPi(_ sender: Any) {
         let vc: ViewController = presentingViewController as! ViewController
         vc.installingRpiBacklight = true
         if !vc.validHost(host: vc.pihost, user: vc.piuser, pass: vc.pipass) {
@@ -31,16 +31,22 @@ class SettingsViewController: UIViewController {
             vc.installingRpiBacklight = false
             self.dismiss(animated: true, completion: nil)
         } else {
-            let installAlert = UIAlertController(title: "Install on Pi", message: "RUN THIS COMMAND NOW??\n\n" + "git clone https://github.com/linusg/rpi-backlight.git && cd rpi-backlight && sudo python3 setup.py install && sudo cat SUBSYSTEM==\"backlight\",RUN+=\"/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power\" > /etc/udev/rules.d/backlight-permissions.rules", preferredStyle: UIAlertController.Style.actionSheet)
+            let installAlert = UIAlertController(title: "Install server dependancies on Pi device", message: "RUN THIS COMMAND NOW??\n\n" + "This will download server dependancies to the home directory on your pi. You can then review the installer script and optionally have it run for you.", preferredStyle: UIAlertController.Style.actionSheet)
             installAlert.popoverPresentationController?.sourceView = self.installRpiButton
             installAlert.popoverPresentationController?.sourceRect = (sender as! UIButton).bounds
             installAlert.addAction(UIAlertAction(title: "Yes, do it!", style: .default, handler: { (action: UIAlertAction!) in
-                vc.sshCmd(host: vc.pihost, user: vc.piuser, pass: vc.pipass, command: "git clone https://github.com/linusg/rpi-backlight.git && cd rpi-backlight && sudo python3 setup.py install && sudo cat SUBSYSTEM==\"backlight\",RUN+=\"/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power\" > /etc/udev/rules.d/backlight-permissions.rules")
+                vc.sshCmd(host: vc.pihost, user: vc.piuser, pass: vc.pipass, command: "git clone https://github.com/rouxdoo/SwiftServer.git", completion: { (cmd) -> Void in
+                    vc.sshCmd(host: vc.pihost, user: vc.piuser, pass: vc.pipass, command: "cat ./SwiftServer/installer.sh", completion: { (cmd) -> Void in
+                        vc.logView.text = ""
+                        vc.log(cmd + "\nThe installer script is located at:\n/home/pi/SwiftServer/installer.sh\nClick \"run\" above or install manually.\nThe installer will take a long time to complete.")
+                        vc.shellCmdTextField.text = "~/SwiftServer/installer.sh"
+                    })
+                })
                 vc.installingRpiBacklight = false
                 self.dismiss(animated: true, completion: nil)
             }))
             installAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-                vc.log("Install of rpi-backlight cancelled")
+                vc.log("Install of server dependancies cancelled")
                 vc.installingRpiBacklight = false
                 self.dismiss(animated: true, completion: nil)
             }))
@@ -52,8 +58,8 @@ class SettingsViewController: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    @IBAction func nmsshLicense(_ sender: Any) {
-        if let url = URL(string: "https://github.com/NMSSH/NMSSH/blob/master/LICENSE"), UIApplication.shared.canOpenURL(url) {
+    @IBAction func elementalGit(_ sender: Any) {
+        if let url = URL(string: "https://github.com/robreuss/ElementalController"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -65,6 +71,9 @@ class SettingsViewController: UIViewController {
         vc.pihostTextfield.text = ""
         vc.piuserTextfield.text = ""
         vc.pipasswdTextfield.text = ""
+        vc.logView.text = ""
+        vc.log("All stored data was cleared.")
+        vc.isConnected(state: vc.server?.isConnected ?? false)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -74,16 +83,4 @@ class SettingsViewController: UIViewController {
         settingsPane.layer.borderWidth = 2
         settingsPane.layer.borderColor = UIColor.blue.cgColor
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
