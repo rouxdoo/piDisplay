@@ -178,7 +178,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.backlightSwitch.isEnabled = true
             self.pwrLedSwitch.isEnabled = true
             self.actLedSwitch.isEnabled = true
-        } else {
+        } else { // isConnected(false)
+            if comType == .swift {
+                self.server = nil
+            }
             self.connectionStatusLabel.text = "Unable to connect"
             self.brightnessSlider.isEnabled = false
             self.backlightSwitch.isEnabled = false
@@ -223,10 +226,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         dismissKeyboard()
         logView.text = ""
         if comType == .swift {
+            if server == nil {
+                self.isConnected(state: false)
+                log("SwiftServer not connected. Try SSH.")
+                return
+            }
             if (server?.isConnected)! {
                 log("Connected to swift server at: " + (server?.remoteServerAddress)!)
             } else {
-                log("Not connected")
+                self.isConnected(state: false)
+                server = nil
             }
             return
         }
@@ -492,6 +501,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             serverDevice.events.deviceDisconnected.handler = { serverDevice in
                 self.log("SwiftServer disconnected")
+                self.isConnected(state: false)
             }
             // Finally, connect to the server!
             serverDevice.connect()
@@ -553,10 +563,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             UserDefaults.standard.set(ComType.ssh.rawValue, forKey: "comType")
             log("Enter your raspberry pi ssh credentials above")
-            log("to use ssh.")
-            // switch to SwiftServer mode
-            segmentedController.selectedSegmentIndex = 1
-            segmentChanged(segmentedController)
+            log("to use ssh or try connecting to SwiftServer.")
         } else {
             pihostTextfield.text = UserDefaults.standard.string(forKey: "pihost")
             piuserTextfield.text = UserDefaults.standard.string(forKey: "piuser")
@@ -567,8 +574,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 brightnessSlider.isContinuous = true
                 segmentedController.selectedSegmentIndex = 1
                 segmentChanged(segmentedController)
-//                setupSwift()
-//                isConnected(state: server?.isConnected ?? false)
                 return
             }
             testButtonPressed(testConnectionButton)

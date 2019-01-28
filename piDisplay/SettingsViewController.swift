@@ -39,6 +39,7 @@ class SettingsViewController: UIViewController {
                     vc.sshCmd(host: vc.pihost, user: vc.piuser, pass: vc.pipass, command: "cat ./SwiftServer/installer.sh", completion: { (cmd) -> Void in
                         vc.logView.text = ""
                         vc.log(cmd + "\nThe installer script is located at:\n/home/pi/SwiftServer/installer.sh\nClick \"run\" above or install manually.\nThe installer will take a long time to complete.")
+                        vc.log("...like really, 5-10 minutes\nso go make coffee or something.")
                         vc.shellCmdTextField.text = "~/SwiftServer/installer.sh"
                     })
                 })

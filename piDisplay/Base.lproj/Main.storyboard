@@ -272,8 +272,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-4i-2fT">
-                                        <rect key="frame" x="48" y="481" width="163" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-4i-2fT">
+                                        <rect key="frame" x="48" y="486.5" width="164.5" height="30"/>
                                         <state key="normal" title="Clear Stored Login Data"/>
                                         <connections>
                                             <action selector="clearUserDefaults:" destination="yrP-SZ-Ei5" eventType="touchUpInside" id="3B6-Xz-ofG"/>
@@ -302,6 +302,7 @@
                                     <constraint firstItem="379-yB-0pQ" firstAttribute="top" secondItem="htS-Hx-Gxn" secondAttribute="bottom" id="FLr-WG-0Nx"/>
                                     <constraint firstItem="9bt-jH-ivc" firstAttribute="trailing" secondItem="htS-Hx-Gxn" secondAttribute="trailing" id="FpH-QD-uRt"/>
                                     <constraint firstItem="9Pb-Mn-N7P" firstAttribute="top" secondItem="GXc-HA-7MP" secondAttribute="bottom" id="HJS-GJ-3xa"/>
+                                    <constraint firstItem="8AP-4g-rv6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rha-do-MBS" secondAttribute="leading" constant="20" symbolic="YES" id="Jll-I4-CCM"/>
                                     <constraint firstItem="GXc-HA-7MP" firstAttribute="top" secondItem="379-yB-0pQ" secondAttribute="bottom" id="Kmb-GD-qSH"/>
                                     <constraint firstItem="QGJ-kW-HXs" firstAttribute="leading" secondItem="Rha-do-MBS" secondAttribute="leading" constant="8" id="PM9-VA-FJ8"/>
                                     <constraint firstItem="9bt-jH-ivc" firstAttribute="leading" secondItem="htS-Hx-Gxn" secondAttribute="leading" id="Pid-O5-KKR"/>
