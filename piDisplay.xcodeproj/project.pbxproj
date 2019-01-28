@@ -40,6 +40,7 @@
 		23551A9E5B93F6229045DFC5 /* Pods-piDisplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piDisplay.release.xcconfig"; path = "Pods/Target Support Files/Pods-piDisplay/Pods-piDisplay.release.xcconfig"; sourceTree = "<group>"; };
 		D3278A9921E15DCC001D83FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D32C02E621E2EEF6001BC9E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D33C004B21FF9D5E0023C899 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = Pods/../Cartfile; sourceTree = "<group>"; };
 		D3B95A5721EECE4F00000563 /* ElementalController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ElementalController.framework; path = Carthage/Build/iOS/ElementalController.framework; sourceTree = "<group>"; };
 		D3B95A5C21EEDC5200000563 /* Socket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Socket.framework; path = Carthage/Build/iOS/Socket.framework; sourceTree = "<group>"; };
 		D3FDB76321DA821600208773 /* piDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +90,7 @@
 				D3B95A5C21EEDC5200000563 /* Socket.framework */,
 				D3B95A5721EECE4F00000563 /* ElementalController.framework */,
 				D32C02E621E2EEF6001BC9E6 /* README.md */,
+				D33C004B21FF9D5E0023C899 /* Cartfile */,
 				D3FDB76521DA821600208773 /* piDisplay */,
 				D3FDB76421DA821600208773 /* Products */,
 				34DB592372726C3299FC15A4 /* Pods */,
