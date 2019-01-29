@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var settingsPane: UIView!
     @IBOutlet weak var closeButtonPane: UIButton!
     @IBOutlet weak var installRpiButton: UIButton!
+    @IBOutlet weak var versionLabel: UILabel!
     
     @IBAction func closePaneButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -80,6 +81,10 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]! as! String
+        let build = Bundle.main.infoDictionary!["CFBundleVersion"]! as! String
+        let str: String = "V." + version + " b." + build
+        versionLabel.text = str
         settingsPane.layer.cornerRadius = 15
         settingsPane.layer.borderWidth = 2
         settingsPane.layer.borderColor = UIColor.blue.cgColor
