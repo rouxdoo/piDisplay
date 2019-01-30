@@ -141,6 +141,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if session.isAuthorized {
             log("Authorized: " + session.remoteBanner!)
             if installingRpiBacklight {
+                UserDefaults.standard.set(self.pihost, forKey: "pihost")
+                UserDefaults.standard.set(self.piuser, forKey: "piuser")
+                UserDefaults.standard.set(self.pipass, forKey: "pipass")
                 return true
             }
             var error: NSError?
