@@ -568,7 +568,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             pihostTextfield.text = UserDefaults.standard.string(forKey: "pihost")
             piuserTextfield.text = UserDefaults.standard.string(forKey: "piuser")
             pipasswdTextfield.text = UserDefaults.standard.string(forKey: "pipass")
-            comType = ComType(rawValue: UserDefaults.standard.integer(forKey: "comType"))!
+            if ComType(rawValue: UserDefaults.standard.integer(forKey: "comType")) == nil {
+                UserDefaults.standard.set(ComType.ssh.rawValue, forKey: "comType")
+            } else {
+                comType = ComType(rawValue: UserDefaults.standard.integer(forKey: "comType"))!
+            }
             if comType == .swift {
                 log("Swift Server is current com channel")
                 brightnessSlider.isContinuous = true
