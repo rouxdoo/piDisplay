@@ -236,6 +236,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ElementalController.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Socket.framework",
 			);
 			outputFileListPaths = (
 			);
