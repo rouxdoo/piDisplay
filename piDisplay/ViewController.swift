@@ -122,6 +122,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 let bottom = NSMakeRange(location, 1)
                 self.logView.scrollRangeToVisible(bottom)
             }
+            self.logView.flashScrollIndicators()
         }
     }
     func validHost(host: String, user: String, pass: String) -> Bool {
