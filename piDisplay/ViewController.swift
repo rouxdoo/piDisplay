@@ -336,11 +336,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let path = "/sys/class/leds/led1/brightness"
             log("Setting power")
             if (sender as! UISwitch).isOn {
-                sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo echo 255 > " + path, completion: { (_) -> Void in
+                sshCmd(host: pihost, user: piuser, pass: pipass, command: "echo 255 | sudo tee " + path, completion: { (_) -> Void in
                     self.log("Power LED set: on" + "\n")
                 })
             } else {
-                sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo echo 0 > " + path, completion: { (_) -> Void in
+                sshCmd(host: pihost, user: piuser, pass: pipass, command: "echo 0 | sudo tee " + path, completion: { (_) -> Void in
                     self.log("Power LED set: off" + "\n")
                 })
             }
@@ -369,11 +369,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             log("Setting activity")
             let path = "/sys/class/leds/led0/brightness"
             if (sender as! UISwitch).isOn {
-                sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo echo 255 > " + path, completion: { (_) -> Void in
+                sshCmd(host: pihost, user: piuser, pass: pipass, command: "echo 255 | sudo tee " + path, completion: { (_) -> Void in
                     self.log("Activity LED set: on" + "\n")
                 })
             } else {
-                sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo echo 0 > " + path, completion: { (_) -> Void in
+                sshCmd(host: pihost, user: piuser, pass: pipass, command: "echo 0 | sudo tee " + path, completion: { (_) -> Void in
                     self.log("Activity LED set: off" + "\n")
                 })
             }
