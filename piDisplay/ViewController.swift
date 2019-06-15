@@ -204,7 +204,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 server?.disconnect()
                 server = nil
             }
-            testButtonPressed(testConnectionButton)
+            testButtonPressed(testConnectionButton as Any)
             brightnessSlider.isContinuous = false
             pihostTextfield.isEnabled = true
             piuserTextfield.isEnabled = true
@@ -291,7 +291,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 systemBacklight = 0.0
                 status = "off"
             }
-            backlightElement?.value = systemBacklight
+//            backlightElement?.value = systemBacklight
+            backlightElement?.floatValue = systemBacklight
             do {
                 try _ = server?.send(element: backlightElement!)
             } catch {
@@ -323,7 +324,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 systemPwr = 0.0
                 status = "off"
             }
-            pwrElement?.value = systemPwr
+//            pwrElement?.value = systemPwr
+            pwrElement?.floatValue = systemPwr
             do {
                 try _ = server?.send(element: pwrElement!)
             } catch {
@@ -356,7 +358,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 systemAct = 0.0
                 status = "off"
             }
-            actElement?.value = systemAct
+//            actElement?.value = systemAct
+            actElement?.floatValue = systemAct
             do {
                 try _ = server?.send(element: actElement!)
             } catch {
@@ -383,7 +386,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if comType == .swift {
             systemBrightness = (sender as! UISlider).value
             brightness = systemBrightness!
-            brightnessElement?.value = systemBrightness
+//            brightnessElement?.value = systemBrightness
+            brightnessElement?.floatValue = systemBrightness
             do {
                 try _ = server?.send(element: brightnessElement!)
             } catch {
@@ -410,7 +414,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         log("---------------\n")
         if comType == .swift {
             log("Shell Command: " + shellCmd)
-            cmdElement?.value = shellCmd
+//            cmdElement?.value = shellCmd
+            cmdElement?.stringValue = shellCmd
             do {
                 try _ = server?.send(element: cmdElement!)
             } catch {
@@ -461,12 +466,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         dataType: .String))
             
             self.brightnessElement?.handler = {element, _ in
-                self.systemBrightness = element.value as? Float
+//                self.systemBrightness = element.value as? Float
+                self.systemBrightness = element.floatValue
                 self.brightnessSlider.value = self.systemBrightness!
                 self.log("Brightness is currently \(self.systemBrightness ?? 0)")
             }
             self.backlightElement?.handler = {element, _ in
-                self.systemBacklight = element.value as? Float
+//                self.systemBacklight = element.value as? Float
+                self.systemBacklight = element.floatValue
                 if self.systemBacklight == 0.0 {
                     self.backlightSwitch.isOn = false
                     self.log("Backlight is currently off")
@@ -476,7 +483,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             self.pwrElement?.handler = {element, _ in
-                self.systemPwr = element.value as? Float
+//                self.systemPwr = element.value as? Float
+                self.systemPwr = element.floatValue
                 if self.systemPwr == 0.0 {
                     self.pwrLedSwitch.isOn = false
                     self.log("Power LED is currently off")
@@ -486,7 +494,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             self.actElement?.handler = {element, _ in
-                self.systemAct = element.value as? Float
+//                self.systemAct = element.value as? Float
+                self.systemAct = element.floatValue
                 if self.systemAct == 0.0 {
                     self.actLedSwitch.isOn = false
                     self.log("Activity LED is currently off")
@@ -496,7 +505,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             self.cmdElement?.handler = { element, _ in
-                self.log(element.value as! String)
+//                self.log(element.value as! String)
+                self.log(element.stringValue ?? "received nil string in element handler for cmdElement")
             }
             // Once connected, you can send elements to the server...
             serverDevice.events.connected.handler = {serverDevice in
@@ -534,7 +544,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == shellCmdTextField {
-            shellCmdPressed(shellCmdButton)
+            shellCmdPressed(shellCmdButton as Any)
         }
         return true
     }
@@ -581,10 +591,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 log("Swift Server is current com channel")
                 brightnessSlider.isContinuous = true
                 segmentedController.selectedSegmentIndex = 1
-                segmentChanged(segmentedController)
+                segmentChanged(segmentedController as Any)
                 return
             }
-            testButtonPressed(testConnectionButton)
+            testButtonPressed(testConnectionButton as Any)
         }
     }
 }
