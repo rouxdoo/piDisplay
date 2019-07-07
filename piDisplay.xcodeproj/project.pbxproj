@@ -12,6 +12,15 @@
 		D3B95A5921EECE5000000563 /* ElementalController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3B95A5721EECE4F00000563 /* ElementalController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3B95A5D21EEDC5200000563 /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B95A5C21EEDC5200000563 /* Socket.framework */; };
 		D3B95A5E21EEDC5200000563 /* Socket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3B95A5C21EEDC5200000563 /* Socket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3E084E622B5BE42009D8B18 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E084E422B5BE42009D8B18 /* Interface.storyboard */; };
+		D3E084E822B5BE44009D8B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E084E722B5BE44009D8B18 /* Assets.xcassets */; };
+		D3E084EF22B5BE44009D8B18 /* piWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3E084EE22B5BE44009D8B18 /* piWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3E084F422B5BE44009D8B18 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E084F322B5BE44009D8B18 /* InterfaceController.swift */; };
+		D3E084F622B5BE44009D8B18 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E084F522B5BE44009D8B18 /* ExtensionDelegate.swift */; };
+		D3E084F822B5BE44009D8B18 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E084F722B5BE44009D8B18 /* NotificationController.swift */; };
+		D3E084FA22B5BE44009D8B18 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E084F922B5BE44009D8B18 /* ComplicationController.swift */; };
+		D3E084FC22B5BE45009D8B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E084FB22B5BE45009D8B18 /* Assets.xcassets */; };
+		D3E0850122B5BE45009D8B18 /* piWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D3E084E222B5BE42009D8B18 /* piWatch.app */; };
 		D3FDB76721DA821600208773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDB76621DA821600208773 /* AppDelegate.swift */; };
 		D3FDB76921DA821600208773 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDB76821DA821600208773 /* ViewController.swift */; };
 		D3FDB76C21DA821600208773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FDB76A21DA821600208773 /* Main.storyboard */; };
@@ -19,6 +28,23 @@
 		D3FDB77121DA821700208773 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FDB76F21DA821700208773 /* LaunchScreen.storyboard */; };
 		E0D19F2438EA92FDE62594AB /* Pods_piDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF080AAC58363128C4688C /* Pods_piDisplay.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3E084F022B5BE44009D8B18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3FDB75B21DA821600208773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3E084ED22B5BE44009D8B18;
+			remoteInfo = "piWatch Extension";
+		};
+		D3E084FF22B5BE45009D8B18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3FDB75B21DA821600208773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3E084E122B5BE42009D8B18;
+			remoteInfo = piWatch;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D3B95A5A21EECE5000000563 /* Embed Frameworks */ = {
@@ -33,6 +59,28 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3E0850522B5BE45009D8B18 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D3E084EF22B5BE44009D8B18 /* piWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E0850922B5BE45009D8B18 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D3E0850122B5BE45009D8B18 /* piWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +91,18 @@
 		D33C004B21FF9D5E0023C899 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = Pods/../Cartfile; sourceTree = "<group>"; };
 		D3B95A5721EECE4F00000563 /* ElementalController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ElementalController.framework; path = Carthage/Build/iOS/ElementalController.framework; sourceTree = "<group>"; };
 		D3B95A5C21EEDC5200000563 /* Socket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Socket.framework; path = Carthage/Build/iOS/Socket.framework; sourceTree = "<group>"; };
+		D3E084E222B5BE42009D8B18 /* piWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E084E522B5BE42009D8B18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D3E084E722B5BE44009D8B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3E084E922B5BE44009D8B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E084EE22B5BE44009D8B18 /* piWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "piWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E084F322B5BE44009D8B18 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		D3E084F522B5BE44009D8B18 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		D3E084F722B5BE44009D8B18 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		D3E084F922B5BE44009D8B18 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		D3E084FB22B5BE45009D8B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3E084FD22B5BE45009D8B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E084FE22B5BE45009D8B18 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		D3FDB76321DA821600208773 /* piDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FDB76621DA821600208773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FDB76821DA821600208773 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +114,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D3E084EB22B5BE44009D8B18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3FDB76021DA821600208773 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,6 +151,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D3E084E322B5BE42009D8B18 /* piWatch */ = {
+			isa = PBXGroup;
+			children = (
+				D3E084E422B5BE42009D8B18 /* Interface.storyboard */,
+				D3E084E722B5BE44009D8B18 /* Assets.xcassets */,
+				D3E084E922B5BE44009D8B18 /* Info.plist */,
+			);
+			path = piWatch;
+			sourceTree = "<group>";
+		};
+		D3E084F222B5BE44009D8B18 /* piWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D3E084F322B5BE44009D8B18 /* InterfaceController.swift */,
+				D3E084F522B5BE44009D8B18 /* ExtensionDelegate.swift */,
+				D3E084F722B5BE44009D8B18 /* NotificationController.swift */,
+				D3E084F922B5BE44009D8B18 /* ComplicationController.swift */,
+				D3E084FB22B5BE45009D8B18 /* Assets.xcassets */,
+				D3E084FD22B5BE45009D8B18 /* Info.plist */,
+				D3E084FE22B5BE45009D8B18 /* PushNotificationPayload.apns */,
+			);
+			path = "piWatch Extension";
+			sourceTree = "<group>";
+		};
 		D3FDB75A21DA821600208773 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +183,8 @@
 				D32C02E621E2EEF6001BC9E6 /* README.md */,
 				D33C004B21FF9D5E0023C899 /* Cartfile */,
 				D3FDB76521DA821600208773 /* piDisplay */,
+				D3E084E322B5BE42009D8B18 /* piWatch */,
+				D3E084F222B5BE44009D8B18 /* piWatch Extension */,
 				D3FDB76421DA821600208773 /* Products */,
 				34DB592372726C3299FC15A4 /* Pods */,
 				7B76012D48928111D7D5F11B /* Frameworks */,
@@ -102,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				D3FDB76321DA821600208773 /* piDisplay.app */,
+				D3E084E222B5BE42009D8B18 /* piWatch.app */,
+				D3E084EE22B5BE44009D8B18 /* piWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +218,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D3E084E122B5BE42009D8B18 /* piWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E0850622B5BE45009D8B18 /* Build configuration list for PBXNativeTarget "piWatch" */;
+			buildPhases = (
+				D3E084E022B5BE42009D8B18 /* Resources */,
+				D3E0850522B5BE45009D8B18 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3E084F122B5BE44009D8B18 /* PBXTargetDependency */,
+			);
+			name = piWatch;
+			productName = piWatch;
+			productReference = D3E084E222B5BE42009D8B18 /* piWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		D3E084ED22B5BE44009D8B18 /* piWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E0850222B5BE45009D8B18 /* Build configuration list for PBXNativeTarget "piWatch Extension" */;
+			buildPhases = (
+				D3E084EA22B5BE44009D8B18 /* Sources */,
+				D3E084EB22B5BE44009D8B18 /* Frameworks */,
+				D3E084EC22B5BE44009D8B18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "piWatch Extension";
+			productName = "piWatch Extension";
+			productReference = D3E084EE22B5BE44009D8B18 /* piWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		D3FDB76221DA821600208773 /* piDisplay */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3FDB77521DA821700208773 /* Build configuration list for PBXNativeTarget "piDisplay" */;
@@ -134,10 +263,12 @@
 				2F11E306D6C94E08C2979C58 /* [CP] Embed Pods Frameworks */,
 				D3B95A5A21EECE5000000563 /* Embed Frameworks */,
 				D3B95A5B21EECE9D00000563 /* ShellScript */,
+				D3E0850922B5BE45009D8B18 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D3E0850022B5BE45009D8B18 /* PBXTargetDependency */,
 			);
 			name = piDisplay;
 			productName = piDisplay;
@@ -150,13 +281,24 @@
 		D3FDB75B21DA821600208773 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Ian Jones";
 				TargetAttributes = {
+					D3E084E122B5BE42009D8B18 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					D3E084ED22B5BE44009D8B18 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					D3FDB76221DA821600208773 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -174,11 +316,30 @@
 			projectRoot = "";
 			targets = (
 				D3FDB76221DA821600208773 /* piDisplay */,
+				D3E084E122B5BE42009D8B18 /* piWatch */,
+				D3E084ED22B5BE44009D8B18 /* piWatch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D3E084E022B5BE42009D8B18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E084E822B5BE44009D8B18 /* Assets.xcassets in Resources */,
+				D3E084E622B5BE42009D8B18 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E084EC22B5BE44009D8B18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E084FC22B5BE45009D8B18 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3FDB76121DA821600208773 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +411,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D3E084EA22B5BE44009D8B18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E084F822B5BE44009D8B18 /* NotificationController.swift in Sources */,
+				D3E084FA22B5BE44009D8B18 /* ComplicationController.swift in Sources */,
+				D3E084F622B5BE44009D8B18 /* ExtensionDelegate.swift in Sources */,
+				D3E084F422B5BE44009D8B18 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3FDB75F21DA821600208773 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,7 +434,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D3E084F122B5BE44009D8B18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3E084ED22B5BE44009D8B18 /* piWatch Extension */;
+			targetProxy = D3E084F022B5BE44009D8B18 /* PBXContainerItemProxy */;
+		};
+		D3E0850022B5BE45009D8B18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3E084E122B5BE42009D8B18 /* piWatch */;
+			targetProxy = D3E084FF22B5BE45009D8B18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		D3E084E422B5BE42009D8B18 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E084E522B5BE42009D8B18 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		D3FDB76A21DA821600208773 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +475,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D3E0850322B5BE45009D8B18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JC2H4442S;
+				INFOPLIST_FILE = "piWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rouxdoo.piDisplay.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		D3E0850422B5BE45009D8B18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JC2H4442S;
+				INFOPLIST_FILE = "piWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rouxdoo.piDisplay.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		D3E0850722B5BE45009D8B18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JC2H4442S;
+				IBSC_MODULE = piWatch_Extension;
+				INFOPLIST_FILE = piWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rouxdoo.piDisplay.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		D3E0850822B5BE45009D8B18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JC2H4442S;
+				IBSC_MODULE = piWatch_Extension;
+				INFOPLIST_FILE = piWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rouxdoo.piDisplay.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
 		D3FDB77321DA821700208773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -449,6 +724,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D3E0850222B5BE45009D8B18 /* Build configuration list for PBXNativeTarget "piWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E0850322B5BE45009D8B18 /* Debug */,
+				D3E0850422B5BE45009D8B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E0850622B5BE45009D8B18 /* Build configuration list for PBXNativeTarget "piWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E0850722B5BE45009D8B18 /* Debug */,
+				D3E0850822B5BE45009D8B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3FDB75E21DA821600208773 /* Build configuration list for PBXProject "piDisplay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

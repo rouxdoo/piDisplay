@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="piWatch" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="hostname" id="sVy-C8-w92">
+                            <fontDescription key="font" type="system" pointSize="10"/>
+                        </label>
+                        <switch width="1" alignment="left" value="YES" title="Back Light" id="BVF-td-Vd1">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                            <connections>
+                                <action selector="backlightChanged:" destination="AgC-eL-Hgc" id="Mk0-Yi-ZQS"/>
+                            </connections>
+                        </switch>
+                        <slider width="1" alignment="left" value="255" maximum="255" steps="5" id="6q5-1k-8TU">
+                            <connections>
+                                <action selector="brightnessChanged:" destination="AgC-eL-Hgc" id="Bhc-HT-0Km"/>
+                            </connections>
+                        </slider>
+                        <switch width="1" alignment="left" value="YES" title="Pwr Led" id="JUq-6V-JAj">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                            <connections>
+                                <action selector="pwrChanged:" destination="AgC-eL-Hgc" id="3Su-ke-pNv"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" alignment="left" value="YES" title="Act Led" id="86J-eT-rhS">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                            <connections>
+                                <action selector="actChanged:" destination="AgC-eL-Hgc" id="SSe-W8-FgU"/>
+                            </connections>
+                        </switch>
+                    </items>
+                    <connections>
+                        <outlet property="actLedSwitch" destination="86J-eT-rhS" id="Sf2-ym-sPA"/>
+                        <outlet property="backlightSwitch" destination="BVF-td-Vd1" id="pDP-gw-sao"/>
+                        <outlet property="brightnessSlider" destination="6q5-1k-8TU" id="cVD-Eg-36P"/>
+                        <outlet property="hostLabel" destination="sVy-C8-w92" id="ybm-FQ-wiG"/>
+                        <outlet property="pwrLedSwitch" destination="JUq-6V-JAj" id="f1i-Tp-1qV"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="175" y="319"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="piWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="566" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="piWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="538" y="225"/>
+        </scene>
+    </scenes>
+</document>

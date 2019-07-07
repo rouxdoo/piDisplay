@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     func activityDown() {
         activityCount -= 1
-        if activityCount == 0 {
+        if activityCount <= 0 {
             activityIndicator.stopAnimating()
         }
     }
@@ -126,6 +126,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     func validHost(host: String, user: String, pass: String) -> Bool {
+        if host == "" || user == "" {
+            log("Enter valid ssh credentials for your pi")
+            log("then press \"Test Connection\" to save")
+            return false
+        }
         log(" ----------------\n")
         log("Validating host: " + host)
         log("-username: " + user)
@@ -184,6 +189,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.actLedSwitch.isEnabled = true
         } else { // isConnected(false)
             if comType == .swift {
+                print("discarding server reference")
                 self.server = nil
             }
             self.connectionStatusLabel.text = "Unable to connect"
@@ -232,30 +238,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if comType == .swift {
             if server == nil {
                 self.isConnected(state: false)
-                log("SwiftServer not connected. Try SSH.")
+                log("SwiftServer not connected. Try SSH if connection fails.")
+                setupSwift()
                 return
             }
             if (server?.isConnected)! {
                 log("Connected to swift server at: " + (server?.remoteServerAddress)!)
             } else {
                 self.isConnected(state: false)
-                server = nil
             }
+//            let state = UIApplication.shared.applicationState
+//            if state == .active {
+//
+//            } else {
+//
+//            }
             return
         }
         if validHost(host: pihost, user: piuser, pass: pipass) {
             log("Checking current display settings")
             sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --power", completion: { (cmd) -> Void in
                 if cmd.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "True" {
+                    self.systemBacklight = 1.0
                     self.backlightSwitch.isOn = true
                     self.log("Backlight is on")
                 } else {
+                    self.systemBacklight = 0.0
                     self.backlightSwitch.isOn = false
                     self.log("Backlight is off")
                 }
             })
             sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight --actual-brightness", completion: { (cmd) -> Void in
                 self.brightness = Float(cmd.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)) ?? 0
+                self.systemBrightness = self.brightness
                 self.brightnessSlider.value = self.brightness
                 self.log("Brightness: " + String(self.brightness))
             })
@@ -400,6 +415,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             log("Setting brightness")
             let slider = sender as! UISlider
             brightness = slider.value
+            systemBrightness = brightness
             let newval = Int(brightness)
             sshCmd(host: pihost, user: piuser, pass: pipass, command: "sudo rpi-backlight -b " + String(newval) + " -d 1 -s", completion: { (_) -> Void in
                 self.log("Brightness set: " + String(self.brightness) + "\n")
@@ -428,8 +444,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         shellCmdTextField.text = ""
     }
-    
+    // func for appDelegate to call to reconnect swiftServer when coming back from background
+    func restartSwift() {
+        if comType == .swift {
+            if server == nil {
+                if !elementalController.browser.isBrowsing {
+                    print("reconnecting to SwiftServer")
+                    setupSwift()
+                }
+            }
+        }
+    }
     func setupSwift() {
+        if elementalController.browser.isBrowsing {
+            print("setupSwift() already browsing...return")
+            return
+        }
 //        elementalController.setupForBrowsingAs(deviceNamed: "ian")
         elementalController.setupForBrowsingAs(deviceNamed: UIDevice.current.name)
         elementalController.browser.events.foundServer.handler { serverDevice in
@@ -510,11 +540,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             // Once connected, you can send elements to the server...
             serverDevice.events.connected.handler = {serverDevice in
+                print("server.connected handler")
                 self.activityDown()
                 self.isConnected(state: true)
             }
             serverDevice.events.deviceDisconnected.handler = { serverDevice in
-                self.log("SwiftServer disconnected")
+                print("server.disconnected handler")
                 self.isConnected(state: false)
             }
             // Finally, connect to the server!
@@ -524,6 +555,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         self.activityUp()
         DispatchQueue.global(qos: .default).async {
+            print("browsing...")
             self.elementalController.browser.browseFor(serviceName: "SwiftServer")
         }
         log("Browsing for SwiftServer on network...")
@@ -565,6 +597,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             piuserTextfield.isEnabled = true
             pipasswdTextfield.isEnabled = true
         }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.mainVc = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -594,8 +628,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 segmentChanged(segmentedController as Any)
                 return
             }
-            testButtonPressed(testConnectionButton as Any)
         }
+        testButtonPressed(testConnectionButton as Any)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.isLaunching = false
     }
 }
 
